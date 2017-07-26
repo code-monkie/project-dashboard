@@ -1,0 +1,14 @@
+<div class="d-flex">
+  <h5>{{statusType}}</h5> 
+  <a class="ml-auto hand" *ngIf="status == 1" [ngbPopover]="updateStatus" popoverTitle="{{statusType}}"><img  src='../../../../../assets/green.jpg' style="max-height: 30px"></a>
+  <a class="ml-auto hand" *ngIf="status == 2" [ngbPopover]="updateStatus" popoverTitle="{{statusType}}"><img  src='../../../../../assets/yellow.jpg' style="max-height: 30px"></a>
+  <a class="ml-auto hand" *ngIf="status == 3" [ngbPopover]="updateStatus" popoverTitle="{{statusType}}"><img  src='../../../../../assets/red.jpg' style="max-height: 30px"></a>  
+</div>
+
+<ng-template #updateStatus>
+  <div class="d-inline-flex">
+    <a class="p-3 hand" (click)="setToGreen()" *ngIf="showGreen()"><img  src='../../../../../assets/green.jpg' style="max-height: 50px"></a>
+    <a class="p-3 hand" (click)="setToYellow()" *ngIf="showYellow()"><img  src='../../../../../assets/yellow.jpg' style="max-height: 50px"></a>
+    <a class="p-3 hand" (click)="setToRed()" *ngIf="showRed()"><img  src='../../../../../assets/red.jpg' style="max-height: 50px"></a>
+  </div>
+</ng-template>

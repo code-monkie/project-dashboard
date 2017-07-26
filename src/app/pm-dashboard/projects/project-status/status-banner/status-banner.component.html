@@ -1,0 +1,45 @@
+<div class="card-deck-wrapper">
+  <div class="card-deck">
+    <div class="card card-outline-primary">
+      <div class="card-block">
+        <h3 class="card-title">Overall Project Status</h3>
+        <br>
+        <app-status-indicator [status]="project.deliveryStatus" [project]="project" statusType="Delivery"></app-status-indicator>
+        <hr>
+        <app-status-indicator [status]="project.budgetStatus"   [project]="project" statusType="Budget"></app-status-indicator>
+        <hr>
+        <app-status-indicator [status]="project.resourceStatus" [project]="project" statusType="Resources"></app-status-indicator>
+        <hr>
+      </div>
+    </div>
+    <div class="card card-outline-primary">
+      <div>
+        <p class="card-text p-4 m-2 border-0" style="border: 1px solid gray;"><strong>Project Name:</strong> {{project.projectName}}</p>
+      </div>
+      <div>
+        <p class="card-text p-4 m-2 border-0" style="border: 1px solid gray;"><strong>SOW Start:</strong> {{project.sowStart}}</p>
+      </div>
+      <div>
+        <p class="card-text p-4 m-2 border-0" style="border: 1px solid gray;"><strong>SOW End:</strong> {{project.sowEnd}}</p>
+      </div>
+    </div>
+    <div class="card card-outline-primary">
+      <div>
+        <p class="card-text p-4 m-2 border-0" style="border: 1px solid gray;"><strong>Project Lead:</strong> {{project.projectLead}}</p>
+      </div>
+      <div>
+        <p class="card-text p-4 m-2 border-0" style="border: 1px solid gray;"><strong>Delivery Exec:</strong> {{project.deliveryExec}}</p>
+      </div>
+      <div>
+        <p class="card-text p-4 m-2 border-0" style="border: 1px solid gray;"><strong>Sales Rep:</strong> {{project.salesRep}}</p>
+      </div>
+    </div>
+    <div class="card card-outline-primary">
+      <div class="card-block"> 
+        <h3 class="card-title">Project Objective</h3>
+        <hr>
+        <p class="card-text">{{project.projectObjective}}</p>
+      </div>
+    </div>
+  </div>
+</div>

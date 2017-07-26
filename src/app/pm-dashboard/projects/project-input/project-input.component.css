@@ -1,0 +1,8 @@
+#input {
+    padding-top: 1rem;
+}
+
+.row .card {
+    border-radius: 10px;
+    background-color: white;
+}

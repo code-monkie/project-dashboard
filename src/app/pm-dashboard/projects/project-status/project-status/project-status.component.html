@@ -1,0 +1,26 @@
+
+<h3 class="card-title text-center" >Project Status</h3>
+<div class="alert alert-danger">  
+  <h5>Active Risks</h5>
+  <ul>
+    <li *ngFor="let risk of project.activeRisks">
+      {{risk}}
+    </li>
+  </ul>
+</div>
+<div class="alert alert-success">
+  <h5>Notable Wins:</h5>
+  <ul>
+    <li *ngFor="let win of project.notableWins">
+      {{win}}
+    </li>
+  </ul>
+</div>
+<div class="alert alert-info">
+  <h5>Sales Opportunities</h5>
+  <ul>
+    <li *ngFor="let saleOps of project.salesOpportunities">
+      {{saleOps}}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+<section id="client">
+    <h3 class="text-center" *ngIf="loading">Loading...</h3>
+    <div class="container-fluid" *ngIf="!loading">
+        <div>
+            <button class="ml-auto btn btn-lg btn-primary m-3 hand" routerLink="/dashboard">Back</button>
+        </div>
+        <div *ngFor="let project of projects" class="m-4 pb-5 project"  >
+            <app-project-card [project]="project" [startExpanded]="projects.length === 1" *ngIf="project"></app-project-card>
+        </div>
+        <button *ngIf="projects && projects.length > 2" class="btn btn-primary m-3 btn-lg hand"  routerLink="/dashboard">Back</button>
+    </div>
+</section>

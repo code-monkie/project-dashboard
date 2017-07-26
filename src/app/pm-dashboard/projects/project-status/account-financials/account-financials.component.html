@@ -1,0 +1,24 @@
+ <h3 class="card-title text-center">Account Financials</h3>
+ <hr>
+ <div class="row">
+   <div class="col-md-6">
+      <p><strong>Current Month:</strong> {{project.currentMonth}}</p>
+      <p><strong>Grand Total:</strong> {{project.grandTotal | currency: 'USD': true: '1.2-2' }}</p>
+      <p>
+        <strong>Backlog pullthrough:</strong> {{project.backlogPullthrough}}% 
+        <i *ngIf="project.backlogPullthrough > project.prevBacklogPullthrough" class="fa fa-long-arrow-up  text-success" aria-hidden="true"></i>
+        <i *ngIf="project.backlogPullthrough < project.prevBacklogPullthrough" class="fa fa-long-arrow-down  text-danger" aria-hidden="true"></i>
+      </p>
+      <p>
+        <strong>Invoice per day:</strong> {{project.invoicePerDay | currency: 'USD': true: '1.2-2'}} 
+        <i *ngIf="project.invoicePerDay > project.prevInvoicePerDay" class="fa fa-long-arrow-up  text-success" aria-hidden="true"></i>
+        <i *ngIf="project.invoicePerDay < project.prevInvoicePerDay" class="fa fa-long-arrow-down  text-danger" aria-hidden="true"></i>
+      </p>
+   </div>
+   <div class="col-md-6">
+      <p><strong>Previous Month:</strong> {{project.prevMonth}}</p>
+      <p><strong>Grand Total:</strong> {{project.prevGrandTotal | currency: 'USD': true: '1.2-2'}}</p>
+      <p><strong>Backlog pullthrough:</strong> {{project.prevBacklogPullthrough}}%</p>
+      <p><strong>Invoice per day:</strong> {{project.prevInvoicePerDay | currency: 'USD': true: '1.2-2'}}</p>
+   </div>
+ </div>

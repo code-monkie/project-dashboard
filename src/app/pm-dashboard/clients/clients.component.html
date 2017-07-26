@@ -1,0 +1,13 @@
+<section id="clients">
+    <h3 class="text-center" *ngIf="loading">Loading...</h3>
+
+    <div class="card-group">
+        <a  class="card p-3 m-3 alert" 
+            *ngFor="let client of clients" 
+            style="max-width: 450px;" 
+            [ngClass]="{'alert-success': !client.inDanger,  'alert-danger':client.inDanger }"
+            [routerLink]="['/dashboard/client', client.clientId]">
+           <img class="card-img-top" [src]="'../../assets/' + client.imageUrl" style="width: 400px">
+        </a>
+    </div>
+</section>

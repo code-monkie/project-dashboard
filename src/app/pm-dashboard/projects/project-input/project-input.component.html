@@ -1,0 +1,282 @@
+<section id="input">
+<div class="container" *ngIf="!loading">
+  <div class="row">
+    <div class="card card-block col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+
+        <div
+          id="user-data"
+          ngModelGroup="userData"
+          #userData="ngModelGroup">
+          <div class="form-group">
+            <label for="client"><h5>Client</h5></label>
+            <select ngModel required name="client" id="client" class="form-control">
+              <option *ngFor="let client of getClientList(); let i = index" [value]="i">{{client.name}}</option>
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="projectname"><h5>Project Name</h5></label>
+            <input
+              type="text"
+              id="projectname"
+              class="form-control"
+              ngModel
+              name="projectname"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="projectlead"><h5>Project Lead</h5></label>
+            <input
+              type="text"
+              id="projectlead"
+              class="form-control"
+              ngModel
+              name="projectlead"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="deliveryexec"><h5>Delivery Exec</h5></label>
+            <input
+              type="text"
+              id="deliveryexec"
+              class="form-control"
+              ngModel
+              name="deliveryexec"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="salesrep"><h5>Sales Rep</h5></label>
+            <input
+              type="text"
+              id="salesrep"
+              class="form-control"
+              ngModel
+              name="salesrep"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="startdate"><h5>SOW Start Date</h5></label>
+            <input
+              type="text"
+              id="startdate"
+              class="form-control"
+              ngModel
+              name="startdate"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="enddate"><h5>SOW End Date</h5></label>
+            <input
+              type="text"
+              id="enddate"
+              class="form-control"
+              ngModel
+              name="enddate"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="projectobjective"><h5>Project Objective</h5></label>
+            <input
+              type="text"
+              id="projectobjective"
+              class="form-control"
+              ngModel
+              name="projectobjective"
+              required>
+          </div>
+
+          <label for="projectactiverisks"><h5>Active Risks</h5></label>
+          <ul class="list-group">
+            <li class="list-group-item mb-2" *ngFor="let risk of activeRisks; let i = index">
+              <span class="text-muted">{{risk}}</span>
+              <div style="margin-left:auto"><button class="btn btn-danger btn-sm" type="button" (click)="removeRisk(i)">Delete</button></div>
+            </li>
+          </ul>
+          <div>
+            <div class="row">
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="newRisk"
+                  class="form-control mr-5 mb-2"
+                  name="newRisk"
+                  [(ngModel)]="newRisk"
+                  (keydown.enter)="addRisk()">
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-success pull-right mb-3" type="button" (click)="addRisk()">Add Risk</button>
+              </div>
+            </div>
+          </div>
+          
+          <label><h5>Notable Wins</h5></label>
+          <ul class="list-group">
+            <li class="list-group-item mb-2" *ngFor="let win of notableWins; let i = index">
+             <span class="text-muted">{{win}}</span>
+              <div style="margin-left:auto"><button class="btn btn-danger btn-sm" type="button" (click)="removeWin(i)">Delete</button></div>
+            </li>
+          </ul>
+          <div>
+            <div class="row">
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="newWin"
+                  class="form-control mr-5 mb-2"
+                  name="newWin"
+                  [(ngModel)]="newWin"
+                  (keydown.enter)="addWin()">
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-success pull-right mb-3" type="button" (click)="addWin()">Add Win</button>
+              </div>
+            </div>
+          </div>
+
+          <label><h5>Sales Opportunities</h5></label>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let opportunity of salesOpportunities; let i = index">
+              <span class="text-muted">{{opportunity}}</span>
+              <div style="margin-left:auto"><button class="btn btn-danger btn-sm" type="button" (click)="removeOpportunity(i)">Delete</button></div>
+            </li>
+          </ul>
+          <div class="mt-2">
+            <div class="row">
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="newOpportunity"
+                  class="form-control mr-5 mb-2"
+                  name="newOpportunity"
+                  [(ngModel)]="newOpportunity"
+                  (keydown.enter)="addOpportunity()">
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-success pull-right mb-3" type="button" (click)="addOpportunity()">Add Opportunity</button>
+              </div>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="currentmonth"><h5>Current Month</h5></label>
+            <input
+              type="text"
+              id="currentmonth"
+              class="form-control"
+              ngModel
+              name="currentmonth"
+              required>
+          </div>
+         <div class="form-group">
+            <label for="grandtotal"><h5>Grand total</h5></label>
+            <input
+              type="text"
+              id="grandtotal"
+              class="form-control"
+              ngModel
+              name="grandtotal"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="pullthrough"><h5>Pullthrough</h5></label>
+            <input
+              type="text"
+              id="pullthrough"
+              class="form-control"
+              ngModel
+              name="pullthrough"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="invoiceperday"><h5>Invoice per day</h5></label>
+            <input
+              type="text"
+              id="invoiceperday"
+              class="form-control"
+              ngModel
+              name="invoiceperday"
+              required>
+          </div>    
+          <div class="form-group">
+            <label for="previousmonth"><h5>Previous Month</h5></label>
+            <input
+              type="text"
+              id="previousmonth"
+              class="form-control"
+              ngModel
+              name="previousmonth"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="prevgrandtotal"><h5>Previous Month's Grand total</h5></label>
+            <input
+              type="text"
+              id="prevgrandtotal"
+              class="form-control"
+              ngModel
+              name="prevgrandtotal"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="prevpullthrough"><h5>Previous month's Pullthrough</h5></label>
+            <input
+              type="text"
+              id="prevpullthrough"
+              class="form-control"
+              ngModel
+              name="prevpullthrough"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="previnvoiceperday"><h5>Previous month's Invoice per day</h5></label>
+            <input
+              type="text"
+              id="previnvoiceperday"
+              class="form-control"
+              ngModel
+              name="previnvoiceperday"
+              required>
+          </div>          
+          <div class="form-group">
+            <label for="resources"><h5>Number of Resources</h5></label>
+            <input
+              type="text"
+              id="resources"
+              class="form-control"
+              ngModel
+              name="resources"
+              required>
+          </div>          
+          <div class="form-group">
+            <label for="leverage"><h5>Leverage</h5></label>
+            <input
+              type="text"
+              id="leverage"
+              class="form-control"
+              ngModel
+              name="leverage"
+              required>
+          </div>          
+          <div class="form-group">
+            <label for="notes"><h5>Notes about the team:</h5></label>
+            <input
+              type="text"
+              id="notes"
+              class="form-control"
+              ngModel
+              name="notes"
+              required>
+          </div>          
+          
+        </div>
+        <br>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>

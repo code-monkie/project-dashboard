@@ -1,0 +1,38 @@
+<section id="status">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <img *ngIf="project.imageUrl" [src]="'../../assets/' + project.imageUrl" class="img-fluid" alt="Logo">
+      </div>
+      <div class="col-md-10">
+        <app-status-banner [project]="project"></app-status-banner>
+      </div>
+    </div>
+    <div class="card-header collapsed my-4">
+      <a class="card-title" data-toggle="collapse" data-parent="#accordion" [href]="'#project'+project.id">
+         <h5>View More Details</h5>
+      </a>
+    </div>
+    <div [id]="'project'+project.id" class="card-block collapse" [ngClass]="{'show': startExpanded}">
+       <div class="card-deck-wrapper">
+          <div class="card-deck">
+            <div class="card card-outline-primary">
+              <div class="card-block">
+                <app-project-status [project]="project"></app-project-status>
+              </div>
+            </div>
+            <div class="card card-outline-primary">
+              <div class="card-block">
+               <app-account-financials [project]="project"></app-account-financials>
+              </div>
+            </div>
+            <div class="card card-outline-primary">
+              <div class="card-block">
+                <app-resources [project]="project"></app-resources>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
